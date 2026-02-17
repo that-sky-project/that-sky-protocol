@@ -21,10 +21,13 @@ Player's currency list.
 |color_white_wax|int||
 |candles|int|Candle count.|
 |heart|int|Heart count.|
-|season_candle|int|Season candle count.|
-|prestige|int||
 |vip|int||
-|prestige_vip|int||
 |wax|int|Wax count.|
-|season_vip|int||
+|prestige|int|Prestige candle.|
 |prestige_wax|int||
+|prestige_vip|int||
+|season_candle|int|Season candle count.|
+|season_wax|int|Season candle wax count.|
+|season_heart|int|Season heart count.|
+|season_pass_token|int|Season Pass.|
+|season_vip|int||
