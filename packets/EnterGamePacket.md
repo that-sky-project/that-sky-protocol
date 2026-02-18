@@ -1,6 +1,7 @@
 # EnterGamePacket (17)
 
-|name|type|note|
-|-|-|-|
-|playerCount|compressed||
-|playerList|EnterGamePlayer[]||
+- playerCount
+  - compressed
+- playerList
+  - **example element**
+    - [EnterGamePlayer](./types/EnterGamePlayer.md)
