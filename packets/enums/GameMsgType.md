@@ -2,7 +2,7 @@
 
 |name|value|note|
 |-|-|-|
-|GameMsgType_Snapshot|3||
+|GameMsgType_PlayerState|3||
 |GameMsgType_AffinityBarn|7||
 |GameMsgType_NetLevelDataElect|8||
 |GameMsgType_NetLevelDataRevoke|9||
