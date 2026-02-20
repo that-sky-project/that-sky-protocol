@@ -8,7 +8,7 @@
       - [NetLevelDataHeartbeat](./types/NetLevelDataHeartbeat.md)
     - if GameMsgType_PlayerState
       - snapshotHeader
-        - [SnapshotHeader](./types/SnapShotHeader.md)
+        - [SnapshotHeader](./types/SnapshotHeader.md)
       - playerStates
         - **example element**
           - size
