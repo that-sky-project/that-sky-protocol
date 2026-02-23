@@ -1,4 +1,4 @@
-# GameMsgPacket
+# GameMsgPacket (14)
 
 - gameMsgHeader
   - [GameMsgHeader](./types/GameMsgHeader.md)
@@ -10,10 +10,15 @@
       - snapshotHeader
         - [SnapshotHeader](./types/SnapshotHeader.md)
       - playerStates
-        - **example element**
-          - size
-            - u32
-          - playerId
-            - [PlayerId](./types/PlayerId.md)
-          - state
-            - [PlayerState](./types/PlayerState.md)
+        - dependency on `packet source`:
+          - if from server
+            - **example element**
+              - size
+                - u32
+              - playerId
+                - [PlayerId](./types/PlayerId.md)
+              - state
+                - [PlayerState](./types/PlayerState.md)
+          - if from client
+            - state
+              - [PlayerState](./types/PlayerState.md)
