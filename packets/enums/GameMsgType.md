@@ -7,5 +7,5 @@
 |GameMsgType_NetLevelDataElect|8||
 |GameMsgType_NetLevelDataRevoke|9||
 |GameMsgType_NetLevelDataHeartbeat|12||
-|GameMsgType_DeltaAck|14||
+|GameMsgType_SnapshotAck|14||
 |GameMsgType_MusicSync|15||
