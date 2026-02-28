@@ -22,3 +22,8 @@
           - if from client
             - state
               - [PlayerState](./types/PlayerState.md)
+    - if GameMsgType_SnapshotAck
+      - levelDeltaAck
+        - u08
+      - playerDeltaAck
+        - u08

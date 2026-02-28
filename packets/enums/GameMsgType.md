@@ -2,10 +2,11 @@
 
 |name|value|note|
 |-|-|-|
-|GameMsgType_PlayerState|3||
+|GameMsgType_PlayerStateDelta|3||
 |GameMsgType_AffinityBarn|7||
 |GameMsgType_NetLevelDataElect|8||
 |GameMsgType_NetLevelDataRevoke|9||
+|GameMsgType_LevelStateDelta|11||
 |GameMsgType_NetLevelDataHeartbeat|12||
 |GameMsgType_SnapshotAck|14||
 |GameMsgType_MusicSync|15||
