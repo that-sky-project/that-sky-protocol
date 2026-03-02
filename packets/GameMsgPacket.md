@@ -6,6 +6,12 @@
   - dependency on `gameMsgHeader.gameMsgType`:
     - if GameMsgType_NetLevelDataHeartbeat
       - [NetLevelDataHeartbeat](./types/NetLevelDataHeartbeat.md)
+    - if GameMsgType_NetRpc
+      - playerId
+        - [PlayerId](./types/PlayerId.md)
+      - netRpcs
+        - **example element (read til the end)**
+          - [NetRpc](./types/NetRpc.md)
     - if GameMsgType_PlayerState
       - snapshotHeader
         - [SnapshotHeader](./types/SnapshotHeader.md)
