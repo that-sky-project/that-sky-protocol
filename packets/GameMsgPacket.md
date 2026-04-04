@@ -4,8 +4,6 @@
   - [GameMsgHeader](./types/GameMsgHeader.md)
 - data
   - dependency on `gameMsgHeader.gameMsgType`:
-    - if GameMsgType_NetLevelDataHeartbeat
-      - [NetLevelDataHeartbeat](./types/NetLevelDataHeartbeat.md)
     - if GameMsgType_NetRpc
       - playerId
         - [PlayerId](./types/PlayerId.md)
@@ -15,19 +13,32 @@
     - if GameMsgType_PlayerState
       - snapshotHeader
         - [SnapshotHeader](./types/SnapshotHeader.md)
-      - playerStates
-        - dependency on `packet source`:
-          - if from server
-            - **example element**
-              - size
-                - u32
-              - playerId
-                - [PlayerId](./types/PlayerId.md)
+      - **snapshot data**
+        - playerStates
+          - dependency on `packet source`:
+            - if from server
+              - **example element (read til the end)**
+                - size
+                  - u32
+                - playerId
+                  - [PlayerId](./types/PlayerId.md)
+                - state
+                  - [PlayerState](./types/PlayerState.md)
+            - if from client
               - state
                 - [PlayerState](./types/PlayerState.md)
-          - if from client
-            - state
-              - [PlayerState](./types/PlayerState.md)
+    - if GameMsgType_NetLevelDataElect
+      - snapshotHeader
+        - [SnapshotHeader](./types/SnapshotHeader.md)
+      - **snapshot data**
+        - [NetLevelData](./types/NetLevelData.md)
+    - if GameMsgType_NetLevelData
+      - snapshotHeader
+        - [SnapshotHeader](./types/SnapshotHeader.md)
+      - **snapshot data**
+        - [NetLevelData](./types/NetLevelData.md)
+    - if GameMsgType_NetLevelDataHeartbeat
+      - [NetLevelDataHeartbeat](./types/NetLevelDataHeartbeat.md)
     - if GameMsgType_SnapshotAck
       - levelDeltaAck
         - u08
