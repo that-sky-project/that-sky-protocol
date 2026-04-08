@@ -31,12 +31,30 @@
       - snapshotHeader
         - [SnapshotHeader](./types/SnapshotHeader.md)
       - **snapshot data**
-        - [NetLevelData](./types/NetLevelData.md)
+        - electedPlayer
+          - u08
+        - levelId
+          - u32
+        - unk_1
+          - u16
+        - hasInitialData
+          - bool
+        - netLevelData
+          - [NetLevelData](./types/NetLevelData.md)
     - if GameMsgType_NetLevelData
       - snapshotHeader
         - [SnapshotHeader](./types/SnapshotHeader.md)
       - **snapshot data**
-        - [NetLevelData](./types/NetLevelData.md)
+        - electedPlayer
+          - u08
+        - levelId
+          - u32
+        - unk_1
+          - u16
+        - hasInitialData
+          - bool
+        - netLevelData
+          - [NetLevelData](./types/NetLevelData.md)
     - if GameMsgType_NetLevelDataHeartbeat
       - [NetLevelDataHeartbeat](./types/NetLevelDataHeartbeat.md)
     - if GameMsgType_SnapshotAck

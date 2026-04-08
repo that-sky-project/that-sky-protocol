@@ -1,14 +1,6 @@
 # NetLevelData
 Level states.
 
-- electedPlayer
-  - u08
-- levelId
-  - u32
-- unk_1
-  - u16
-- hasInitialData
-  - bool
 - unk_2
   - u16
 - unk_3
