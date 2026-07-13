@@ -1,11 +1,11 @@
 # GameMsgHeader
 
 - gameMsgType
-  - u08
+  - [GameMsgType](../enums/GameMsgType.md)
 - levelSeq
   - u08
 - sourcePlayer
-  - u16
+  - u08
 
 |field name|note|
 |-|-|
