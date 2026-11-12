@@ -12,7 +12,7 @@
 **信封后是 [快照帧](../types/snapshot.md)**，差分解出的明文
 才是 NetLevelData 结构。
 
-## NetLevelData 明文布局（0.35.1 抓包+汇编双证）
+## NetLevelData 明文布局
 
 | 偏移 | 字段 | 类型 | 说明 |
 |-|-|-|-|

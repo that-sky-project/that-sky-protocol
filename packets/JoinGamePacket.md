@@ -23,7 +23,7 @@ token）。字段序经官方抓包复算与房间服务器互通双验证。
 | … | localPlayerId | u32 | |
 | … | currentPlayerId | u32 | |
 | … | levelDataLength | u32 | ≤ 0x2000 |
-| … | levelData | u8[len] | 携带关卡数据入房（0.35.1 服务器解出但不存储） |
+| … | levelData | u8[len] | 携带关卡数据入房 |
 | … | moving | bool | true = 这是迁移重连 |
 | … | hasTransferAddress | bool | |
 | … | mergeState | compressed u8(0,255) | |
