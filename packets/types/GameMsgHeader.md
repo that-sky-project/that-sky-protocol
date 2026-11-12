@@ -1,13 +1,7 @@
 # GameMsgHeader
 
-- gameMsgType
-  - [GameMsgType](../enums/GameMsgType.md)
-- levelSeq
-  - u08
-- sourcePlayer
-  - u08
-
-|field name|note|
-|-|-|
-|levelSeq|Level change sequence, updated by [LevelUpdatePacket](../LevelUpdatePacket.md). GameMsgPacket with mismatch sequence number will be ignored by the client.|
-|sourcePlayer|Player id of the packet original sender. Only valid in GameMsgType_NetRpc.|
+| 字段 | 类型 | 说明 |
+|-|-|-|
+| gameMsgType | u8 | [GameMsgType](../enums/GameMsgType.md) |
+| levelSeq | u8 | levelChangeCount；不匹配接收方本地值 → 整包丢弃（观众族请求例外） |
+| sourcePlayer | u8 | 原始发送者 netId；C→S 由服务器改写为转发者 |

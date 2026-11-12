@@ -1,8 +1,3 @@
 # NetLevelMergeState
 
-- flags
-  - compressed u32(0, 255)
-
-|field name|note|
-|-|-|
-|flags|Actually must be a uint8_t.|
+`compressed(0,255)` = 1 字节。NetLevelData 的合并状态。

@@ -1,7 +1,4 @@
 # NetRpc
-Used by server packets. Identifying players in NetPlayerBarn of clients.
 
-- id
-  - compressed u32(0, kNetRpc_Count - 1)
-- data
-  - u08\[\]
+见 [../gamemsg/NetRpc.md](../gamemsg/NetRpc.md)——记录格式随族文档维护
+（[slot][hash][flags][bodyLen][body] 串联，gift uuid body+12）。

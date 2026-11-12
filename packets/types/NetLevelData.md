@@ -1,26 +1,4 @@
 # NetLevelData
-Level states.
 
-- unk_2
-  - u16
-- unk_3
-  - u08
-- unk_4
-  - u32
-- netLevelMergeState
-  - [NetLevelMergeState](./NetLevelMergeState.md)
-- unk_5
-  - bool
-- unk_6
-  - u16
-- unk_7
-  - u16
-- dataLength
-  - u16
-- levelData
-  - **exampleElement**
-    - u08
-
-|field name|note|
-|-|-|
-|levelData|Byte array.|
+见 [../gamemsg/NetLevelData.md](../gamemsg/NetLevelData.md)——布局随
+族文档维护（levelId 在偏移 5 的抓包铁证）。

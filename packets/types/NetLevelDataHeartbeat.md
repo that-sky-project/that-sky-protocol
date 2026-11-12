@@ -1,8 +1,3 @@
 # NetLevelDataHeartbeat
 
-|name|type|note|
-|-|-|-|
-||bool||
-||u08||
-|levelId|u32||
-||u16||
+见 [../gamemsg/NetLevelDataHeartbeat.md](../gamemsg/NetLevelDataHeartbeat.md)。
