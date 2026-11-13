@@ -14,7 +14,7 @@ packetId 14 的子类型。信封：`[type u8][levelSeq u8][sourcePlayer u8]`，
 | 3 | PlayerStateDelta | ◆ | [快照帧](../types/snapshot.md)：S→C `[size u32][playerId u8][state]×n`；C→S 单条 | [capture] |
 | 4 | Critters | ◆ | 不透明转发（服务器不解析） | [capture] |
 | 7 | Affinity | ▲ | `[compressed count ≤8][{netPlayerId u8, value u8}]×n`（value/255 归一化） | [capture] |
-| 8 | NetLevelDataElect | ▼ | [快照帧] + [NetLevelData](../types/NetLevelData.md)（1047B 初始关卡数据） | [capture] |
+| 8 | NetLevelDataElect | ▼ | [快照帧] + [NetLevelData](../types/NetLevelData.md)（含初始关卡数据；只在客户端 LevelUpdate 后下发，首选 version=2） | [capture] |
 | 9 | NetLevelDataRevoke | ▼ | 权威让位触发；非权威发送被忽略 | [asm] |
 | 10 | NetLevelDataRevokeAck | ▲ | 带完整关卡数据 | [capture] |
 | 11 | NetLevelData | ◆ | [快照帧] + [NetLevelData](../types/NetLevelData.md) | [capture] |

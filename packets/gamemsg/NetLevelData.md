@@ -7,28 +7,42 @@
 > 仅两处：快照层（对每个接收者维护独立差分窗口），以及 Elect(8)/Revoke(9)
 > 的权威生命周期事件（见 [../flows/authority.md](../flows/authority.md)）。
 > 明文结构的字段级解析只在存储初始关卡数据（LevelStateStore）时需要，
-> 且只取 electedPlayer / levelId / dataLength / levelData 四个字段。
+> 且只取 electedPlayer / levelId / authorityVersion / dataLength / levelData。
 
 **信封后是 [快照帧](../types/snapshot.md)**，差分解出的明文
 才是 NetLevelData 结构。
 
-## NetLevelData 明文布局
+## NetLevelData 明文布局（IDA `sub_1A80EA8` 逐字节证实）
 
 | 偏移 | 字段 | 类型 | 说明 |
 |-|-|-|-|
-| 0 | electedPlayer | u8 | 权威玩家 netId |
-| 1 | unknown0 | u8 | 官方样本值 1 |
-| 2 | unknown1 | u16 LE | 官方样本值 74 |
-| 4 | hasData | **1 bit** + 字节对齐 | 有无关卡数据 |
-| 5 | **levelId** | u32 LE | **在偏移 5**（bit-probe 铁证；旧实现放偏移 1，每个官方包解出 0x01000101 且重编码清零字节 8——新玩家初始世界状态的关卡 id 损坏，已修） |
-| 9 | unknown2 | u16 LE | |
-| 11 | unknown3 | u8 | |
-| 12 | levelHash | u32 LE | |
-| 16 | mergeState | u8（compressed 0..255） | NetLevelMergeState |
-| 17 | unknown5 | u16 LE | |
-| 19 | unknown6 | u16 LE | |
-| 21 | dataLength | u16 LE | ≤ 0x2000 |
-| 23 | levelData | u8[dataLength] | 客户端序列化的关卡流（暗影/新地图生成等） |
+| 0 | electedPlayer | u8 | 包头玩家 id（真实权威由会话状态确定，此字段可为 0，不作授权依据） |
+| 1 | **levelId** | u32 LE | **在偏移 1**（sub_1A80EA8 序列化顺序铁证） |
+| 5 | **authorityVersion** | u16 LE | 选举纪元（见下） |
+| 7 | hasData | **1 bit** + 字节对齐 | 有无关卡数据 |
+| 8 | unknown2 | u16 LE | |
+| 10 | unknown3 | u8 | |
+| 11 | levelHash | u32 LE | netVersion 首字 |
+| 15 | mergeState | u8（compressed 0..255） | NetLevelMergeState |
+| 16 | unknown5 | u16 LE | |
+| 18 | unknown6 | u16 LE | |
+| 20 | dataLength | u16 LE | ≤ 0x2000 |
+| 22 | levelData | u8[dataLength] | 客户端序列化的关卡流 |
+
+空包体总长 **22 字节**（官方 Elect 黄金向量）。
+
+> 历史勘误：早期从抓包误读为 `[electedPlayer u8][unknown0 u8][unknown1 u16]
+> [hasData bit][levelId u32@偏移5]`，是旧实现的错位根源（levelId 解成
+> 0x01000101、重编码清零字节 8），已按原生布局修正。
+
+## authorityVersion 生命周期
+
+它计数**选举**，不是每次 LevelUpdate：
+
+- 首次 Elect version=2；当选客户端 C→S type11 上传仍为 2；
+- S→C type11 投影为 3；后续真实重选 Elect=4（+2 步进，u16 回绕）。
+- 服务器据此拒绝过期上传；同代际重复 LevelUpdate 幂等，不重发 Elect。
+- 官方 Elect 只在客户端 LevelUpdate 之后下发；JoinGame 阶段不发。
 
 ## 流程
 
@@ -41,4 +55,6 @@
   非权威玩家经 levelDelta SnapshotWriter 差分下发。
 
 验证：**[capture]**（1831B 双向样本、1047B Elect、763B RevokeAck）+
-**[asm]**（sub_1A80EA8 原语序列 + bit-probe levelId@偏移5）。
+**[asm]**（sub_1A80EA8 原语序列）+
+**[golden]**（`tools/verify-level-election-capture.mjs`：50+270 Elect、
+83075 条 type11 帧由现编解码 byte-exact 复算）。

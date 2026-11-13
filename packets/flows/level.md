@@ -2,10 +2,11 @@
 
 ```
 客户端 ─── LevelUpdate(4) [lvSeq, levelId] ───▶ 服务器
-   player.changeLevel()：lvSeq 更新
+   player.changeLevel()：lvSeq 更新，标记本代际 levelReady
    旧关权威？→ revokeAuthority('authority_left_level') + rebalance
    新关无权威？→ 选举（第一个活跃未惩罚玩家）
-   新关有权威？→ 给该玩家单独发 Elect（带初始关卡数据）
+   新关有权威？→ 给该已就绪玩家单独发 Elect（带初始关卡数据；
+                 JoinGame 阶段不发，同代际重复 LevelUpdate 幂等）
    广播 PlayerChangedLevel(8)
 ```
 
